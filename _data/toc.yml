@@ -15,7 +15,7 @@
 #   in the sidebar. All other values are ignored.
 
 - title: SCT pipeline
-  url: /sct_mtsat
+  url: /01/sct_mtsat
   not_numbered: true
   expand_sections: true
   sections:
