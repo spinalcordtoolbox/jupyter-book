@@ -14,14 +14,8 @@
 # divider: true if this entry should just be rendered as a horizontal divider
 #   in the sidebar. All other values are ignored.
 
-- title: Home
-  url: /intro
-  not_numbered: true
-- title: Search
-  search: true
-
 - title: SCT pipeline
-  url: /01/sct_mtsat
+  url: /sct_mtsat
   not_numbered: true
   expand_sections: true
   sections:

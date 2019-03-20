@@ -1,12 +1,12 @@
 ---
 redirect_from:
-  - "/01/sct-mtsat"
-interact_link: content/01/sct_mtsat.ipynb
+  - "/sct-mtsat"
+interact_link: content/sct_mtsat.ipynb
 kernel_name: python3
 title: 'SCT pipeline'
 prev_page:
-  url: /intro
-  title: 'Home'
+  url: 
+  title: ''
 next_page:
   url: 
   title: ''
@@ -120,7 +120,7 @@ imgplot = plt.imshow(overlay,alpha=0.3)
 
 
 {:.output .output_png}
-![png](../images/01/sct_mtsat_7_0.png)
+![png](/Users/mathieuboudreau/neuropoly/github/pipelines-jupyter-book/_build/sct_mtsat_7_0.png)
 
 
 
@@ -220,7 +220,7 @@ imgplot = plt.imshow(overlay,alpha=0.3)
 
 
 {:.output .output_png}
-![png](../images/01/sct_mtsat_17_0.png)
+![png](/Users/mathieuboudreau/neuropoly/github/pipelines-jupyter-book/_build/sct_mtsat_17_0.png)
 
 
 
@@ -282,6 +282,6 @@ for i in range(len(plot_dic)+1):
 
 
 {:.output .output_png}
-![png](../images/01/sct_mtsat_23_0.png)
+![png](/Users/mathieuboudreau/neuropoly/github/pipelines-jupyter-book/_build/sct_mtsat_23_0.png)
 
 
