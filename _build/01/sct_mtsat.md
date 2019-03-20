@@ -29,6 +29,8 @@ import sys
 import os
 from os.path import join
 from IPython.display import clear_output
+
+base_path = os.getcwd()
 ```
 
 
@@ -52,8 +54,9 @@ os.chdir('sct_example_data/mt/')
 verbose = True # False clears cells
 
 # Folder/filename config
-mt_folder = '01/sct_example_data/mt'
-qc_folder ='qc'
+parent_dirs = os.path.split(base_path)
+mt_folder_relative = os.path.join('sct_example_data/mt')
+qc_path = os.path.join(base_path, 'qc')
 
 t1w = 't1w'
 mt0 = 'mt0'
@@ -78,7 +81,7 @@ The first processing step consists in segmenting the spinal cord. This is done a
 {:.input_area}
 ```python
 # Segment spinal cord
-!sct_deepseg_sc -i {t1w+file_ext} -c t1 -qc {qc_folder}
+!sct_deepseg_sc -i {t1w+file_ext} -c t1 -qc {qc_path}
 
 if not verbose:
     clear_output()
@@ -98,10 +101,10 @@ if sys.platform == 'darwin':
     sct_deepseg_sc_qc = 'qc/sct_example_data/mt/sct_deepseg_sc'
 else:
     # For linux and on-line Binder execution
-    sct_deepseg_sc_qc = join(qc_folder, mt_folder, 'sct_deepseg_sc')
+    sct_deepseg_sc_qc = join(qc_path, parent_dirs[-1], mt_folder_relative, 'sct_deepseg_sc')
 
 folders = list(filter(lambda x: os.path.isdir(os.path.join(sct_deepseg_sc_qc, x)), os.listdir(sct_deepseg_sc_qc)))
-# folders = list(sct_deepseg_sc_qc)
+
 qc_date = max(folders)
 
 sct_deepseg_sc_qc_dir = join(sct_deepseg_sc_qc, qc_date)
@@ -166,7 +169,7 @@ Next step consists in registering the [PAM50 template](https://www.ncbi.nlm.nih.
 !sct_label_utils -i {t1w+'_seg'+file_ext} -create-seg -1,4 -o {label_c3c4+file_ext}
 
 # Register template->T1w_ax (using template-T1w as initial transformation)
-!sct_register_to_template -i {t1w+'_crop'+file_ext} -s {t1w+'_seg'+file_ext} -ldisc {label_c3c4+file_ext} -ref subject -c t1 -param step=1,type=seg,algo=slicereg,metric=MeanSquares,smooth=2:step=2,type=im,algo=bsplinesyn,metric=MeanSquares,iter=5,gradStep=0.5 -qc {qc_folder}
+!sct_register_to_template -i {t1w+'_crop'+file_ext} -s {t1w+'_seg'+file_ext} -ldisc {label_c3c4+file_ext} -ref subject -c t1 -param step=1,type=seg,algo=slicereg,metric=MeanSquares,smooth=2:step=2,type=im,algo=bsplinesyn,metric=MeanSquares,iter=5,gradStep=0.5 -qc {qc_path}
 
 if not verbose:
     clear_output()
@@ -180,7 +183,7 @@ Once the PAM50 is registered with the T1w image, we can warp all objects pertain
 {:.input_area}
 ```python
 # Warp template
-!sct_warp_template -d {t1w+'_crop'+file_ext} -w {warp_template2anat+file_ext} -qc {qc_folder}
+!sct_warp_template -d {t1w+'_crop'+file_ext} -w {warp_template2anat+file_ext} -qc {qc_path}
 
 if not verbose:
     clear_output()
@@ -199,7 +202,7 @@ if sys.platform == 'darwin':
     sct_warp_template_qc = 'qc/sct_example_data/mt/sct_warp_template'
 else:
     # For linux and on-line Binder execution
-    sct_warp_template_qc = join(qc_folder, mt_folder, 'sct_warp_template')
+    sct_warp_template_qc = join(qc_path, parent_dirs[-1],  mt_folder_relative, 'sct_warp_template')
 
 folders = list(filter(lambda x: os.path.isdir(os.path.join(sct_warp_template_qc, x)), os.listdir(sct_warp_template_qc)))
 qc_date = max(folders)
