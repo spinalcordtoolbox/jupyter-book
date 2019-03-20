@@ -61,7 +61,7 @@ RUN cd $HOME/work;\
     cd sct; \
     yes | ./install_sct; \
     cd .. ;\
-    chmod -R 777 $HOME/work/binder-example;
+    chmod -R 777 $HOME/work/pipelines-jupyter-book;
 
 ENV PATH "/home/jovyan/work/pipelines-jupyter-book/sct/bin:$PATH"
 
