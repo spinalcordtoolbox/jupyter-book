@@ -52,7 +52,7 @@ os.chdir('sct_example_data/mt/')
 verbose = True # False clears cells
 
 # Folder/filename config
-mt_folder = 'binder-example/sct_example_data/mt'
+mt_folder = 'pipelines-jupyter-book/content/01/sct_example_data/mt'
 qc_folder ='qc'
 
 t1w = 't1w'
