@@ -55,7 +55,7 @@ RUN cd $HOME/work;\
                 sklearn \
                 nilearn ; \
     python -m sos_notebook.install;\
-    git clone --single-branch -b master https://github.com/mathieuboudreau/pipelines-jupyter-book;    \
+    git clone --single-branch -b master https://github.com/mathieuboudreau/pipelines-jupyter-book;     \
     cd pipelines-jupyter-book;\
     git clone --branch=master https://github.com/neuropoly/spinalcordtoolbox.git sct; \
     cd sct; \
