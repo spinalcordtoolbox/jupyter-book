@@ -26,34 +26,14 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN cd $HOME/work;\
-    pip install sos==0.17.7 \
-                sos-notebook==0.17.2 \
-                sos-python==0.9.12.1 \
-                sos-bash==0.12.3 \
-                sos-matlab==0.9.12.1 \
-                sos-ruby==0.9.15.0 \
-                sos-sas==0.9.12.3 \
-                sos-julia==0.9.12.1 \
-                sos-javascript==0.9.12.2 \
-                scipy \
-                plotly \
-                dash \
-                dash_core_components \
-                dash_html_components \
-                dash_dangerously_set_inner_html \
-                dash-renderer \
-                sh \
+    pip install scipy \
                 flask \
                 ipywidgets \
                 nbconvert==5.4.0 \
                 jupyterlab>=0.35.4 \
                 pandas \
                 numpy \
-                datascience \
-                folium \
-                matplotlib \
-                sklearn \
-                nilearn ; \
+                matplotlib ; \
     python -m sos_notebook.install;\
     git clone --single-branch -b master https://github.com/mathieuboudreau/pipelines-jupyter-book;     \
     cd pipelines-jupyter-book;\
