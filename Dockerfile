@@ -57,7 +57,7 @@ RUN cd $HOME/work;\
     python -m sos_notebook.install;\
     git clone --single-branch -b master https://github.com/mathieuboudreau/pipelines-jupyter-book;     \
     cd pipelines-jupyter-book;\
-    git clone --branch=master https://github.com/neuropoly/spinalcordtoolbox.git sct; \
+    git clone --depth 1 --branch 4.0.0 https://github.com/neuropoly/spinalcordtoolbox.git sct; \
     cd sct; \
     yes | ./install_sct; \
     cd .. ;\
